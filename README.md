@@ -10,7 +10,7 @@
 
 # Windows Server & Active Directory Administration Portfolio
 
-# Project Overview
+
 
 This repository documents my hands-on Windows Server and Active Directory Administration laboratory, developed entirely from scratch within a virtualised environment using Oracle VirtualBox, Windows Server and Windows 11.
 
