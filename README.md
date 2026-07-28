@@ -169,6 +169,27 @@ TechLab365-Windows-Server-Active-Directory-Administration-Portfolio
 
 ---
 
+# Lab Topology
+
+The laboratory is built using two virtual machines hosted on Oracle VirtualBox.
+
+```text
+Oracle VirtualBox
+│
+├── DC01
+│   ├── Windows Server 2025
+│   ├── Active Directory Domain Services
+│   ├── DNS Server
+│   └── DHCP Server
+│
+└── CLIENT01
+    └── Windows 11 Pro
+```
+
+The Windows Server virtual machine is configured as the Domain Controller and provides Active Directory Domain Services, DNS and DHCP. The Windows 11 virtual machine acts as the domain-joined client used throughout the administrative exercises documented in this repository.
+
+---
+
 # Chapter Overview
 
 ## 01 – Installing Oracle VirtualBox
@@ -197,7 +218,7 @@ The repository begins by preparing the virtual laboratory environment using Orac
 
 ## 02 – Installing Windows Server
 
-This chapter demonstrates the installation of Windows Server, beginning with the creation of the virtual machine and continuing through the complete operating system installation. The server is prepared to become the future Domain Controller for the Active Directory environment.
+This chapter demonstrates the installation of Windows Server 2025, beginning with the creation of the virtual machine and continuing through the complete operating system installation. The server is prepared to become the future Domain Controller for the Active Directory environment.
 
 ### Topics covered
 
@@ -218,7 +239,7 @@ This chapter demonstrates the installation of Windows Server, beginning with the
 
 ---
 
-## 03 – Configuring Windows Server
+## 03 – Preparing Windows Server
 
 Before deploying Active Directory, the server must be configured according to best practices. This chapter demonstrates the initial configuration tasks required to prepare Windows Server for its role within the domain environment.
 
@@ -263,7 +284,7 @@ The Windows 11 client is installed within Oracle VirtualBox to simulate a workst
 
 ---
 
-## 05 – Configuring Windows 11
+## 05 – Preparing Windows 11
 
 The Windows 11 client is configured before joining the Active Directory domain. This chapter demonstrates the initial administrative tasks required to prepare the workstation for enterprise deployment.
 
