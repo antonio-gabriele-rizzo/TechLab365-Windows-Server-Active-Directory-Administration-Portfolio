@@ -75,7 +75,7 @@ Throughout this project I will demonstrate practical experience with:
 | Technology | Purpose |
 |------------|---------|
 | Oracle VirtualBox | Virtualisation platform |
-| Windows Server 2022 | Server operating system |
+| Windows Server 2025 | Server operating system |
 | Windows 11 Pro | Domain client |
 | Active Directory Domain Services | Identity management |
 | DNS Server | Name resolution |
@@ -92,7 +92,7 @@ Throughout this project I will demonstrate practical experience with:
 | Component | Details |
 |-----------|---------|
 | Hypervisor | Oracle VirtualBox |
-| Server Operating System | Windows Server 2022 Standard (Desktop Experience) |
+| Server Operating System | Windows Server 2025 Standard (Desktop Experience) |
 | Client Operating System | Windows 11 Pro |
 | Directory Service | Active Directory Domain Services |
 | Network Type | Private Virtual Network |
@@ -498,7 +498,7 @@ To reproduce this laboratory, the following components are recommended:
 
 - Oracle VirtualBox 7.x (or later)
 - Oracle VM VirtualBox Extension Pack
-- Windows Server 2022 Evaluation ISO (Desktop Experience)
+- Windows Server 2025 Evaluation ISO (Desktop Experience)
 - Windows 11 Pro ISO
 - Minimum 16 GB RAM (32 GB recommended)
 - Quad-Core processor with hardware virtualisation (Intel VT-x / AMD-V)
@@ -506,7 +506,7 @@ To reproduce this laboratory, the following components are recommended:
 - Stable Internet connection
 - GitHub account (for documentation and version control)
 
-Although this laboratory is built using Windows Server 2022 and Windows 11, the concepts and administrative procedures demonstrated throughout this repository are equally applicable to newer versions of Windows Server and modern Windows client operating systems.
+Although this laboratory is built using Windows Server 2025 and Windows 11, the concepts and administrative procedures demonstrated throughout this repository are equally applicable to newer versions of Windows Server and modern Windows client operating systems.
 
 ---
 
@@ -568,7 +568,7 @@ In addition to developing technical expertise, this repository continues the Tec
 
 This project is published for educational and portfolio purposes.
 
-The documentation is based on hands-on experience gained while building a Windows Server laboratory using Oracle VirtualBox, Windows Server 2022 and Windows 11.
+The documentation is based on hands-on experience gained while building a Windows Server laboratory using Oracle VirtualBox, Windows Server 2025 and Windows 11.
 
 Microsoft, Windows Server, Windows, Active Directory, Group Policy and Microsoft Entra ID are trademarks of Microsoft Corporation.
 
