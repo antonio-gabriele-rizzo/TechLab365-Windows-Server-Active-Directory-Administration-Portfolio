@@ -69,12 +69,6 @@ The Oracle VirtualBox download page was accessed and the **Windows hosts** packa
 
 The Windows installer was downloaded to the host computer and used for the installation that follows.
 
-> **Note**
->
-> The download-page screenshot was captured using the Wayback Machine because the current VirtualBox website was not loading correctly in the browser at the time the laboratory was being documented.
-
-The important point for reproducing the laboratory is to use the appropriate Windows installer for the VirtualBox version being used. In this laboratory, the installed version is **7.2.16**.
-
 ---
 
 # Starting the Installation
