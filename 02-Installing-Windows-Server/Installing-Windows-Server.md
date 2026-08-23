@@ -29,7 +29,7 @@ After completing this chapter, I will be able to:
 
 # Prerequisites
 
-Before starting this chapter, ensure you have:
+Before starting this chapter, I ensured that I had:
 
 - Oracle VirtualBox 7.2.16 installed.
 - Administrator permissions on the Windows host.
