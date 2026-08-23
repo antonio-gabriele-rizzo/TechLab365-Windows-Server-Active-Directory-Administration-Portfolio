@@ -27,7 +27,7 @@ After completing this chapter, I will be able to:
 
 # Prerequisites
 
-Before starting this chapter, ensure you have:
+Before starting this chapter, I ensured that I had:
 
 - A Windows host computer.
 - Administrator permissions on the host.
