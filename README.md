@@ -107,63 +107,24 @@ Throughout this project I will demonstrate practical experience with:
 TechLab365-Windows-Server-Active-Directory-Administration-Portfolio
 │
 ├── README.md
-├── LICENSE
 │
 ├── logo
 │   ├── techlab365-logo.png
 │   └── windows-server-active-directory-administration-title.png
 │
-├── Installing-Oracle-VirtualBox
-│   ├── Installing-Oracle-VirtualBox.md
-│   └── screenshots
-│
-├── Installing-Windows-Server
-│   ├── Installing-Windows-Server.md
-│   └── screenshots
-│
-├── Preparing-Windows-Server
-│   ├── Preparing-Windows-Server.md
-│   └── screenshots
-│
-├── Installing-Windows-11
-│   ├── Installing-Windows-11.md
-│   └── screenshots
-│
-├── Preparing-Windows-11
-│   ├── Preparing-Windows-11.md
-│   └── screenshots
-│
-├── Installing-Active-Directory-Domain-Services
-│   ├── Installing-Active-Directory-Domain-Services.md
-│   └── screenshots
-│
-├── Active-Directory-Administration
-│   ├── Active-Directory-Administration.md
-│   └── screenshots
-│
-├── Joining-Windows-11-to-the-Domain
-│   ├── Joining-Windows-11-to-the-Domain.md
-│   └── screenshots
-│
-├── Group-Policy
-│   ├── Group-Policy.md
-│   └── screenshots
-│
-├── DNS-Administration
-│   ├── DNS-Administration.md
-│   └── screenshots
-│
-├── DHCP-Administration
-│   ├── DHCP-Administration.md
-│   └── screenshots
-│
-├── File-Server-and-NTFS-Permissions
-│   ├── File-Server-and-NTFS-Permissions.md
-│   └── screenshots
-│
-└── Troubleshooting-Scenarios
-    ├── Troubleshooting-Scenarios.md
-    └── screenshots
+├── 01-Installing-Oracle-VirtualBox
+├── 02-Installing-Windows-Server
+├── 03-Preparing-Windows-Server
+├── 04-Installing-Windows-11
+├── 05-Preparing-Windows-11
+├── 06-Installing-Active-Directory-Domain-Services
+├── 07-Active-Directory-Administration
+├── 08-Joining-Windows-11-to-the-Domain
+├── 09-Group-Policy
+├── 10-DNS-Administration
+├── 11-DHCP-Administration
+├── 12-File-Server-and-NTFS-Permissions
+└── 13-Troubleshooting-Scenarios
 ```
 
 ---
