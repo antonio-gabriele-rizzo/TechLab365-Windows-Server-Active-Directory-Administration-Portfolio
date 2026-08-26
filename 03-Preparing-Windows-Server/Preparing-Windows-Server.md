@@ -605,4 +605,4 @@ The server remains in **WORKGROUP** at the end of this chapter. It is now prepar
 
 Continue directly to:
 
-**[Chapter 6 – Installing Active Directory Domain Services](../06-Installing-Active-Directory-Domain-Services/Installing-Active-Directory-Domain-Services.md)**
+**[Chapter 4 – Installing Windows 11](../04-Installing-Windows-11/Installing-Windows-11.md)**
