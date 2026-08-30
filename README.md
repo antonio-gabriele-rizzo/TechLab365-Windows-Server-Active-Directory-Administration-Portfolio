@@ -49,7 +49,7 @@ The primary objectives of this repository are to:
 
 # Skills Demonstrated
 
-Throughout this project I will demonstrate practical experience with:
+Throughout this project, I will demonstrate practical experience with:
 
 - Windows Server Administration
 - Active Directory Domain Services (AD DS)
@@ -159,7 +159,7 @@ The repository begins by preparing the virtual laboratory environment using Orac
 
 ## 02 – Installing Windows Server
 
-**Status:** 🚧 In Progress
+**Status:** 🟢 Completed
 
 This chapter demonstrates the installation of Windows Server, beginning with the creation of the virtual machine and continuing through the complete operating system installation. The server is prepared to become the future Domain Controller for the Active Directory environment.
 
@@ -184,7 +184,7 @@ This chapter demonstrates the installation of Windows Server, beginning with the
 
 ## 03 – Preparing Windows Server
 
-**Status:** ⬜ To Be Completed
+**Status:** 🟢 Completed
 
 Before deploying Active Directory, the server must be configured according to best practices. This chapter demonstrates the initial configuration tasks required to prepare Windows Server for its role within the domain environment.
 
@@ -209,7 +209,7 @@ Before deploying Active Directory, the server must be configured according to be
 
 ## 04 – Installing Windows 11
 
-**Status:** ⬜ To Be Completed
+**Status:** 🟢 Completed
 
 The Windows 11 client is installed within Oracle VirtualBox to simulate a workstation in the enterprise environment. This chapter demonstrates the complete installation process and prepares the client operating system for domain integration.
 
@@ -233,7 +233,7 @@ The Windows 11 client is installed within Oracle VirtualBox to simulate a workst
 
 ## 05 – Preparing Windows 11
 
-**Status:** ⬜ To Be Completed
+**Status:** 🟢 Completed
 
 The Windows 11 client is configured before joining the Active Directory domain. This chapter demonstrates the initial administrative tasks required to prepare the workstation for enterprise deployment.
 
