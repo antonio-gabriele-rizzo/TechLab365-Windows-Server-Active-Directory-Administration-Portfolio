@@ -248,7 +248,7 @@ The following command was then used:
 Get-ADForest
 ```
 
-![Verify Active Directory Domain and Forest](screenshots/verify-domain-and-forest.png)
+![Verify Active Directory Domain and Forest](screenshots/verify-ad-domain-and-forest.png)
 
 The output confirmed that:
 
