@@ -113,7 +113,7 @@ The computer was restarted after the name change so that the new hostname was ap
 
 This naming structure will remain consistent throughout the rest of the laboratory and will make the client easier to identify when it is later joined to Active Directory.
 
-> **Screenshot:** Windows 11 configuration showing the final workstation name `WIN11-01`.
+![Windows 11 workstation renamed to WIN11-01](screenshots/windows11-renamed-win11-01.png)
 
 ---
 
@@ -252,7 +252,7 @@ Default Gateway:
 
 The absence of a default gateway on the internal adapter is part of the intended design.
 
-> **Screenshot:** `ipconfig /all` showing the final dual-network configuration.
+
 
 This verification confirmed that Windows 11 had the required configuration before connectivity testing began.
 
@@ -411,7 +411,7 @@ The connectivity test was then repeated from the Windows 11 client.
 
 The Windows Server successfully responded to the ping requests.
 
-> **Screenshot:** PowerShell troubleshooting showing the firewall rule being enabled and the successful connectivity test.
+![Troubleshooting the ICMP firewall rule on the domain controller](screenshots/troubleshooting-icmp-firewall.png)
 
 This troubleshooting process demonstrates an important networking principle: a failed ping does not automatically mean that two devices are disconnected. A host firewall can prevent ICMP responses even when the underlying network connection is functioning correctly.
 
@@ -447,7 +447,7 @@ DC01
 10.10.10.10
 ```
 
-> **Screenshot:** Successful ping from `WIN11-01` to `DC01`.
+![Successful ping from WIN11-01 to the domain controller](screenshots/ping-domain-controller.png)
 
 At this stage, both network paths had been independently tested:
 
