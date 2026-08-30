@@ -1,106 +1,134 @@
-# Chapter 05 – Network Configuration and Connectivity
+# Preparing Windows 11
 
 ## Overview
 
-This chapter documents the network configuration used to connect the Windows 11 client and Windows Server within the lab.
+This chapter documents the preparation of the Windows 11 client virtual machine that will be used throughout the Active Directory home lab.
 
-The environment uses two network adapters on each virtual machine:
+The objective was not simply to install Windows 11. The client needed to be configured and verified so that it could operate correctly in a dual-network lab environment:
 
-- **NAT adapter** – provides internet connectivity.
-- **Internal network adapter (AD-Lab)** – provides isolated communication between the Windows 11 client and the Domain Controller.
+- **Internet access** through the VirtualBox NAT network.
+- **Internal lab connectivity** through the dedicated `AD-Lab` network.
+- A clear and identifiable workstation name.
+- Correct IP addressing on both network adapters.
+- Successful communication with the future domain controller.
+- A documented troubleshooting process for connectivity issues encountered during the configuration.
+
+This approach reflects a real IT support and infrastructure workflow: configure the system, verify each component, identify faults, troubleshoot methodically, and document the final working solution.
 
 ---
 
-## Network Topology
+## Lab Configuration
 
-| Device | Role | Internal IP Address |
-|---|---|---|
-| DC01 | Windows Server / Domain Controller | `10.10.10.10` |
-| WIN11-01 | Windows 11 Client | `10.10.10.20` |
+The Windows 11 virtual machine was configured with two network adapters.
+
+| Component | Configuration |
+|---|---|
+| Operating System | Windows 11 Pro 24H2 |
+| Computer Name | `WIN11-01` |
+| RAM | 8 GB |
+| Processor | Intel Core i7-7700K |
+| Virtual Disk | 80 GB |
+| Network Adapter 1 | NAT – Internet connectivity |
+| Network Adapter 2 | Internal Network – `AD-Lab` |
+| Client IP Address | `10.10.10.20` |
+| Internal Subnet | `10.10.10.0/24` |
+| Domain Controller IP | `10.10.10.10` |
+
+The two-adapter configuration deliberately separates external connectivity from internal Active Directory lab communication.
+
+---
+
+# 1. Verify the Windows 11 Installation
+
+After completing the Windows 11 installation, the first step was to confirm that the virtual machine was running correctly and that the expected system resources had been assigned.
+
+The Windows **System > About** page was used to verify:
+
+- Device name.
+- Windows edition.
+- Windows version.
+- Installed RAM.
+- Processor.
+- 64-bit operating system.
+
+The workstation was renamed to:
+
+```text
+WIN11-01
+```
+
+Using a meaningful hostname is important in an Active Directory environment because computers need to be easily identifiable by administrators.
+
+> **Screenshot:** Windows 11 system information and device name.
+
+---
+
+# 2. Configure the Network Architecture
+
+The Windows 11 client uses two separate network adapters.
+
+## Adapter 1 – Internet Connectivity
+
+The first adapter is connected to VirtualBox NAT.
+
+This adapter provides:
+
+- Internet access.
+- DHCP addressing from VirtualBox.
+- A default gateway.
+- External DNS resolution.
+
+The client received the following IPv4 configuration:
+
+```text
+IPv4 Address:    10.0.2.15
+Subnet Mask:     255.255.255.0
+Default Gateway: 10.0.2.2
+DHCP Server:     10.0.2.2
+```
+
+This adapter is used only for external connectivity.
+
+---
+
+## Adapter 2 – Internal Active Directory Lab
+
+The second adapter is connected to the VirtualBox internal network named:
 
 ```text
 AD-Lab
-│
-├── DC01
-│   └── 10.10.10.10
-│
-└── WIN11-01
-    └── 10.10.10.20
 ```
 
-Subnet: `10.10.10.0/24`
+A static IP address was configured:
 
----
-
-# 1. Windows 11 Network Configuration
-
-The Windows 11 virtual machine uses two network adapters.
-
-## Adapter 1 – Internet Access
-
-NAT provides internet connectivity through DHCP:
-
-- IP address: `10.0.2.15`
-- Subnet mask: `255.255.255.0`
-- Default gateway: `10.0.2.2`
-- DHCP server: `10.0.2.2`
-
-## Adapter 2 – Internal Lab Network
-
-The second adapter connects Windows 11 to the isolated AD-Lab network:
-
-- IP address: `10.10.10.20`
-- Subnet mask: `255.255.255.0`
-- Default gateway: Not configured
-
-No default gateway is required because this adapter is used only for internal lab communication.
-
-The configuration was verified using:
-
-```cmd
-ipconfig /all
+```text
+IPv4 Address: 10.10.10.20
+Subnet Mask:  255.255.255.0
 ```
 
-![Windows 11 network configuration](windows-11-network-configuration.png)
+No default gateway was configured on the internal adapter.
+
+This is intentional.
+
+The internal network is used for communication between lab machines and does not require a route to the internet. Keeping the default gateway only on the NAT adapter prevents Windows from attempting to use the internal network for external traffic.
+
+> **Screenshot:** `ipconfig /all` showing both network adapters and their configuration.
 
 ---
 
-# 2. Windows Server Network Configuration
+# 3. Verify Internet Connectivity
 
-The Windows Server virtual machine also uses two network adapters.
+Before testing the internal lab network, internet connectivity was verified independently.
 
-## Adapter 1 – Internet Access
-
-NAT provides internet connectivity through DHCP:
-
-- IP address: `10.0.2.15`
-- Default gateway: `10.0.2.2`
-
-## Adapter 2 – Internal Lab Network
-
-The internal adapter connects the server to AD-Lab:
-
-- IP address: `10.10.10.10`
-- Subnet mask: `255.255.255.0`
-- Default gateway: Not configured
-
----
-
-# 3. Internet Connectivity Verification
-
-Windows 11 internet connectivity was tested using:
+The following tests were performed:
 
 ```cmd
 ping 8.8.8.8
 ```
 
-Result:
+This confirmed that the workstation could communicate with an external IP address.
 
-```text
-Packets: Sent = 4, Received = 4, Lost = 0 (0% loss)
-```
-
-DNS resolution was tested with:
+DNS resolution was then tested:
 
 ```cmd
 nslookup google.com
@@ -108,65 +136,130 @@ nslookup google.com
 
 The hostname resolved successfully.
 
-Internet connectivity using DNS was then verified:
+Finally, hostname connectivity was tested:
 
 ```cmd
 ping google.com
 ```
 
-The test succeeded, confirming both internet connectivity and DNS resolution.
+All tests completed successfully.
+
+### Result
+
+The NAT adapter was correctly configured and provided:
+
+- Internet connectivity.
+- IP connectivity.
+- DNS name resolution.
+
+This confirmed that the external network configuration was working correctly before troubleshooting the internal lab connection.
 
 ---
 
-# 4. Internal Network Connectivity
+# 4. Verify Internal Network Connectivity
 
-The Windows 11 client was configured with the static address:
+The Windows 11 client was configured with the internal address:
 
 ```text
 10.10.10.20
 ```
 
-The Windows Server internal adapter was configured with:
+The domain controller was configured with:
 
 ```text
 10.10.10.10
 ```
 
-The Windows Server successfully communicated with the Windows 11 client.
+The first test confirmed that the client could communicate on the internal network:
 
-The reverse test from Windows 11 initially failed.
+```cmd
+ping 10.10.10.20
+```
 
----
+The client responded successfully.
 
-# 5. Troubleshooting – Domain Controller Ping Failure
-
-Initially, Windows 11 could not ping the Domain Controller:
+The next test targeted the domain controller:
 
 ```cmd
 ping 10.10.10.10
 ```
 
-Result:
+Initially, this test failed with:
 
 ```text
 Request timed out.
 ```
 
-The network configuration was checked and communication from Windows Server to Windows 11 was working.
+Because both virtual machines were configured on the same internal subnet and the server was reachable from its own network interface, this indicated that the problem was not necessarily VirtualBox networking itself.
 
-Further investigation identified that the Windows Firewall on the server was blocking inbound ICMP Echo Requests.
+A systematic troubleshooting process was therefore required.
 
-The firewall rules were checked using PowerShell:
+---
+
+# 5. Troubleshooting Internal Connectivity
+
+## Verify the Server Network Configuration
+
+The Windows Server virtual machine was started and its network configuration was checked using:
+
+```cmd
+ipconfig /all
+```
+
+The output confirmed that the server had two network adapters:
+
+### Internet Adapter
+
+```text
+IPv4 Address:    10.0.2.15
+Default Gateway: 10.0.2.2
+```
+
+### Internal Lab Adapter
+
+```text
+IPv4 Address: 10.10.10.10
+Subnet Mask:  255.255.255.0
+```
+
+This confirmed that the server and Windows 11 client were correctly configured on the same internal subnet:
+
+```text
+DC01     → 10.10.10.10
+WIN11-01 → 10.10.10.20
+```
+
+The server could also successfully ping the Windows 11 client.
+
+This narrowed the issue down to inbound communication being blocked on the server rather than an addressing or VirtualBox network problem.
+
+---
+
+## Identify the Firewall Issue
+
+PowerShell was used to check the network profiles:
+
+```powershell
+Get-NetConnectionProfile
+```
+
+The internal adapter was identified as an **Unidentified network** with a **Public** network category.
+
+The Windows Firewall rules for ICMP echo requests were then checked:
 
 ```powershell
 Get-NetFirewallRule -DisplayName "*Echo Request*" | Select-Object DisplayName, Enabled
 ```
 
-The required ICMPv4 inbound rule was disabled.
+The relevant inbound ICMPv4 rule was disabled.
 
-## Solution
+This explained why the Windows 11 client could not initially ping the domain controller even though both machines were correctly connected to the same internal network.
 
-The inbound ICMP Echo Request rule was enabled:
+---
+
+## Enable ICMP Echo Requests
+
+The inbound ICMPv4 echo request rule was enabled using PowerShell:
 
 ```powershell
 Enable-NetFirewallRule -DisplayName "Core Networking Diagnostics - ICMP Echo Request (ICMPv4-In)"
@@ -178,49 +271,102 @@ The configuration was verified:
 Get-NetFirewallRule -DisplayName "Core Networking Diagnostics - ICMP Echo Request (ICMPv4-In)" | Select-Object DisplayName, Enabled
 ```
 
-The rule was successfully enabled and the server responded to ping requests.
+The rule was confirmed as:
 
-![Firewall troubleshooting and successful ping](network-connectivity-troubleshooting.png)
+```text
+Enabled: True
+```
+
+This allowed the server to respond to ICMP ping requests.
 
 ---
 
-# 6. Final Connectivity Verification
+# 6. Confirm Client-to-Server Connectivity
 
-After enabling the ICMP firewall rule, Windows 11 successfully communicated with the Domain Controller.
-
-From Windows 11:
+The final connectivity test was performed from the Windows 11 client:
 
 ```cmd
 ping 10.10.10.10
 ```
 
-Result:
+The result showed four successful replies with no packet loss.
 
 ```text
 Packets: Sent = 4, Received = 4, Lost = 0 (0% loss)
 ```
 
-![Successful ping from Windows 11 to the Domain Controller](ping-domain-controller.png)
-
-Final communication:
+This confirmed successful communication between:
 
 ```text
 WIN11-01 (10.10.10.20)
-        ↕
+        ↓
+Internal Network: AD-Lab
+        ↓
 DC01 (10.10.10.10)
 ```
 
+> **Screenshot:** Successful ping from `WIN11-01` to the domain controller at `10.10.10.10`.
+
 ---
 
-# Summary
+# Troubleshooting Summary
 
-The network configuration for the lab is complete:
+| Issue | Cause | Resolution |
+|---|---|---|
+| Client could access the internet | NAT adapter working correctly | No action required |
+| DNS resolution working | External DNS configuration working | No action required |
+| Client could not initially ping DC01 | ICMP echo requests blocked by Windows Firewall | Enabled inbound ICMPv4 echo request rule |
+| Internal network communication required verification | Dual-adapter configuration could introduce routing confusion | Verified addressing and connectivity on both adapters |
 
-- Internet connectivity through NAT.
-- Working DNS resolution.
-- Dedicated isolated AD-Lab network.
-- Static internal IP addresses.
-- Successful communication between Windows 11 and Windows Server.
-- ICMP firewall troubleshooting documented and resolved.
+---
 
-The network foundation is ready for the next lab stage.
+# Key Learning Points
+
+This configuration provided practical experience with several important infrastructure concepts:
+
+- Configuring a Windows client in a virtualised environment.
+- Using multiple network adapters for different purposes.
+- Separating internet and internal lab traffic.
+- Understanding the purpose of a default gateway.
+- Using static IP addressing for internal infrastructure.
+- Using `ipconfig /all` to investigate network configuration.
+- Testing connectivity with `ping`.
+- Testing DNS resolution with `nslookup`.
+- Using PowerShell to inspect network profiles.
+- Investigating Windows Firewall rules.
+- Identifying firewall behaviour as a cause of connectivity failures.
+- Applying a targeted troubleshooting solution rather than changing multiple settings unnecessarily.
+
+---
+
+# Final Configuration
+
+The Windows 11 client is now fully prepared for the next stage of the lab.
+
+| Setting | Final Configuration |
+|---|---|
+| Computer Name | `WIN11-01` |
+| Operating System | Windows 11 Pro |
+| Internet Network | NAT |
+| Internet Connectivity | Working |
+| Internal Network | `AD-Lab` |
+| Client IP | `10.10.10.20` |
+| Domain Controller IP | `10.10.10.10` |
+| Client-to-Server Ping | Successful |
+| DNS Resolution | Working |
+| Lab Connectivity | Verified |
+
+The workstation is now ready to be joined to the Active Directory domain in the next stage of the project.
+
+---
+
+## Screenshots Used
+
+This chapter is supported by the following screenshots:
+
+1. Windows 11 system information showing the final workstation configuration and computer name.
+2. `ipconfig /all` showing the dual-network configuration.
+3. Successful ping from `WIN11-01` to `10.10.10.10` after resolving the firewall issue.
+
+> Screenshot filenames should follow the repository naming convention and should not include chapter numbers.
+
