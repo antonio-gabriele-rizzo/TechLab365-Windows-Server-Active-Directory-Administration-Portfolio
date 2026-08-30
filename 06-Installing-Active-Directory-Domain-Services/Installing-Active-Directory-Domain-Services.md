@@ -103,7 +103,7 @@ Manage → Add Roles and Features
 
 The standard role-based installation option was selected because Active Directory Domain Services was being installed on the local server.
 
-![Add Roles and Features - Active Directory Domain Services](screenshots/add-roles-and-features-ad.png)
+![Add Roles and Features - Wizard](screenshots/add-roles-and-features-wizard.png)
 
 The **Active Directory Domain Services** role was then selected.
 
