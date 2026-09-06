@@ -283,7 +283,7 @@ With the infrastructure in place, this chapter demonstrates the deployment of Ac
 
 ## 07 – Active Directory Administration
 
-**Status:** ⬜ To Be Completed
+**Status:** 🟢 Completed
 
 Once the domain has been created, administrators can begin managing the Active Directory environment. This chapter introduces the primary administrative tools used to organise users, groups, computers and organisational units while demonstrating the day-to-day management tasks performed within a Windows domain.
 
