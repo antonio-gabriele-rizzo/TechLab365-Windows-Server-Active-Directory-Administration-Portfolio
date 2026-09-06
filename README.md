@@ -258,7 +258,7 @@ The Windows 11 client is configured before joining the Active Directory domain. 
 
 ## 06 – Installing Active Directory Domain Services
 
-**Status:** ⬜ To Be Completed
+**Status:** 🟢 Completed
 
 With the infrastructure in place, this chapter demonstrates the deployment of Active Directory Domain Services (AD DS). Windows Server is promoted to a Domain Controller while simultaneously installing DNS and creating the first Active Directory forest and domain.
 
