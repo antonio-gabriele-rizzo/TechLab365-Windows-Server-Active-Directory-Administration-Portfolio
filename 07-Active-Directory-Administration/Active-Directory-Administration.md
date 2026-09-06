@@ -465,39 +465,6 @@ A disabled account can later be reviewed, restored to service or permanently rem
 
 ---
 
-# Re-enabling a Disabled User Account
-
-Disabling an account is not necessarily permanent.
-
-A realistic administration scenario could involve an account being temporarily disabled and later needing to be restored.
-
-To re-enable the account in ADUC:
-
-```text
-Right-click the user account
-→ Enable Account
-```
-
-The account should then be reviewed to ensure that it is appropriate to restore access.
-
-Before re-enabling an account in a real organisation, an administrator should confirm why the account was disabled and whether authorisation has been received to restore access.
-
-This exercise completes the basic account status lifecycle demonstrated in the chapter:
-
-```text
-Active Account
-      ↓
-Disabled
-      ↓
-Reviewed
-      ↓
-Enabled Again
-```
-
-The ability to disable and subsequently restore an account is a common administrative task and is preferable to deleting an account when access may need to be reinstated later.
-
----
-
 # Configuring the Account Lockout Policy
 
 Another common Service Desk scenario occurs when a user repeatedly enters an incorrect password and becomes locked out.
