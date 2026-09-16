@@ -391,7 +391,7 @@ The original policy configuration shown in the captured evidence included:
 
 ![Password Policy Configuration](screenshots/password-policy-configured.png)
 
-During the review, the **Maximum password age** value of 42 days was considered unnecessarily short for this laboratory environment and was changed to **180 days**. No second screenshot was taken because the existing screenshot documents the original policy value and the Markdown records the subsequent change.
+During the review, the **Maximum password age** value of 42 days was considered unnecessarily short for both this laboratory and typical real-world IT environments, so it was changed to **180 days**. No second screenshot was taken because the existing screenshot documents the original policy value, while the repository records the subsequent change.
 
 The password-complexity setting was left enabled.
 
