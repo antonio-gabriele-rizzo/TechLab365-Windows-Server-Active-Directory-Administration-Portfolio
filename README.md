@@ -308,7 +308,7 @@ Once the domain has been created, administrators can begin managing the Active D
 
 ## 08 – Joining Windows 11 to the Domain
 
-**Status:** ⬜ To Be Completed
+**Status:** 🟢 Completed
 
 With Active Directory operational, the Windows 11 client is joined to the domain. This chapter demonstrates the complete domain join process, verifies communication with the Domain Controller and confirms that users can authenticate using domain credentials.
 
@@ -333,7 +333,7 @@ With Active Directory operational, the Windows 11 client is joined to the domain
 
 ## 09 – Group Policy
 
-**Status:** ⬜ To Be Completed
+**Status:** 🟢 Completed
 
 Group Policy enables administrators to centrally manage user and computer settings across the entire domain. This chapter demonstrates how to create, configure and apply Group Policy Objects (GPOs) while exploring how policies are processed and verified on domain-joined computers.
 
