@@ -115,9 +115,11 @@ This is an important practical point when troubleshooting domain joins. A workst
 
 # Troubleshooting DNS Interface Selection
 
-The initial DNS test showed that Windows 11 was still attempting to use the Internet DNS configuration rather than the newly configured Active Directory DNS server.
+During the initial DNS verification, `nslookup techlab365.local` showed that Windows 11 was querying the Internet DNS server `1.1.1.1` instead of the Active Directory DNS server at `10.10.10.10`. The query failed because the public DNS server could not resolve the internal `techlab365.local` domain.
 
-The problem was caused by the presence of two network interfaces:
+![DNS Troubleshooting – Incorrect DNS Server](screenshots/win11-dns-troubleshooting-before.png)
+
+The Windows 11 workstation had two network interfaces:
 
 ```text
 AD-Lab     → Active Directory network
